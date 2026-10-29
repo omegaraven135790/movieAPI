@@ -1,0 +1,47 @@
+// use prisma-8
+model user {
+  id             String          @id @onCreate(uuid())
+  name           String
+  email          String          @unique
+  password       String
+  createdAt      DateTime        @default(now())
+  movies         movie[]         @relation("MovieCreator")
+  watchListItems WatchListItem[]
+}
+
+model movie {
+  id             String          @id @onCreate(uuid())
+  title          String
+  description    String?
+  releaseYear    Int
+  genres         String[]        @default([])
+  runtime        Int?
+  posterUrl      String?
+  createdBy      String
+  createdAt      DateTime        @default(now())
+
+  creator        user            @relation("MovieCreator", fields: [createdBy], references: [id], onDelete: Cascade)
+  watchListItems WatchListItem[]
+}
+
+model WatchListItem {
+  id        String          @id @onCreate(uuid())
+  userId    String
+  movieId   String
+  status    WatchListStatus @default(WatchListStatus.PLANNED)
+  rating    Int?
+  notes     String?
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @default(now())
+
+  user  user  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  movie movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
+}
+
+enum WatchListStatus {
+  @@type("pg/text@1")
+  PLANNED   = "PLANNED"
+  WATCHING  = "WATCHING"
+  COMPLETED = "COMPLETED"
+  DROPPED   = "DROPPED"
+}

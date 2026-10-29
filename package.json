@@ -1,0 +1,22 @@
+{
+  "name": "learnbackend2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "postinstall": "prisma skills sync || exit 0"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "@prisma/orm-postgres": "8.0.0-rc.21",
+    "express": "^5.3.0",
+    "temporal-polyfill": "^1.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "prisma": "8.0.0-rc.28"
+  }
+}
