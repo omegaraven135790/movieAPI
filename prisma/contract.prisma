@@ -28,7 +28,8 @@ model WatchListItem {
   id        String          @id @onCreate(uuid())
   userId    String
   movieId   String
-  status    WatchListStatus @default(WatchListStatus.PLANNED)
+  // status WatchListStatus
+  status    String
   rating    Int?
   notes     String?
   createdAt DateTime        @default(now())
@@ -38,10 +39,9 @@ model WatchListItem {
   movie movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
 }
 
-enum WatchListStatus {
-  @@type("pg/text@1")
-  PLANNED   = "PLANNED"
-  WATCHING  = "WATCHING"
-  COMPLETED = "COMPLETED"
-  DROPPED   = "DROPPED"
-}
+// enum WatchListStatus {
+//   PLANNED
+//   WATCHING
+//   COMPLETED
+//   DROPPED  
+// }

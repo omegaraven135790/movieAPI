@@ -5,3 +5,26 @@ GET http://localhost:5001/
 ### get Hello movies:
 
 GET http://localhost:5001/movies/
+
+### POST /auth/register
+
+POST http://localhost:5001/auth/register
+content-type: application/json
+
+{
+  "name": "tarentino",
+  "email": "tarentino@gmail.com",
+  "password": "tarentino123"
+}
+
+### POST /auth/login
+POST http://localhost:5001/auth/login
+content-type: application/json
+
+{
+  "email": "tarentino@gmail.com",
+  "password": "tarentino123"
+}
+
+### POST /auth/logout
+POST http://localhost:5001/auth/logout
