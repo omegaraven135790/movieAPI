@@ -37,6 +37,8 @@ model WatchListItem {
 
   user  user  @relation(fields: [userId], references: [id], onDelete: Cascade)
   movie movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, movieId])
 }
 
 // enum WatchListStatus {
