@@ -19,7 +19,7 @@ app.use('/watchlist', watchlistRoutes)
 app.use('/movies', movieRoutes)
 app.use('/auth', authRoutes)
 
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT,"0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`)
 })
 
