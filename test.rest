@@ -25,6 +25,33 @@ content-type: application/json
   "email": "tarentino@gmail.com",
   "password": "tarentino123"
 }
-
+### POST /auth/login
 ### POST /auth/logout
 POST http://localhost:5001/auth/logout
+
+### POST /watchlist
+POST http://localhost:5001/watchlist
+authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYwN2NkNmVlLTczMmEtNDQ3NC1hMTk5LTgzOGZmZDFkMTgxYSIsImlhdCI6MTc5NDg0MjYwNCwiZXhwIjoxNzk0OTI5MDA0fQ.-49ZKJrYjrDa1lWazO1j7YV1JO3jBvapIa8fEPYySVg
+content-type: application/json
+
+{
+  "userId": "f07cd6ee-732a-4474-a199-838ffd1d181a",
+  "movieId": "c0e05e51-2e48-4257-8045-07cb2fb86996",
+  "status": "watched",
+  "rating": 5,
+  "notes": "Great movie!"
+}
+
+### DELETE /watchlist/:userId
+DELETE http://localhost:5001/watchlist/f07cd6ee-732a-4474-a199-838ffd1d181a
+authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYwN2NkNmVlLTczMmEtNDQ3NC1hMTk5LTgzOGZmZDFkMTgxYSIsImlhdCI6MTc5NDg0MjYwNCwiZXhwIjoxNzk0OTI5MDA0fQ.-49ZKJrYjrDa1lWazO1j7YV1JO3jBvapIa8fEPYySVg
+content-type: application/json
+
+{
+  "movieId": "c0e05e51-2e48-4257-8045-07cb2fb86996"
+}
+
+### GET /watchlist/:userId
+GET http://localhost:5001/watchlist/f07cd6ee-732a-4474-a199-838ffd1d181a
+authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYwN2NkNmVlLTczMmEtNDQ3NC1hMTk5LTgzOGZmZDFkMTgxYSIsImlhdCI6MTc5NDg0MjYwNCwiZXhwIjoxNzk0OTI5MDA0fQ.-49ZKJrYjrDa1lWazO1j7YV1JO3jBvapIa8fEPYySVg
+content-type: application/json
